@@ -5,7 +5,7 @@ import { UpdateScheduleDto } from './dto/update-schedule.dto';
 
 @Injectable()
 export class SchedulesService {
-  async findAll(startDate?: Date, endDate?: Date): Promise<Schedule[]> {
+  async findAll(perPage: number, page: number, startDate?: Date, endDate?: Date): Promise<Schedule[]> {
     return [];
   }
 
