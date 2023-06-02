@@ -4,14 +4,14 @@ import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { SchedulesService } from './schedules.services';
 import { CreateScheduleDto, UpdateScheduleDto } from './dto';
 
-@ApiTags('Eventos')
+@ApiTags('Gestão de Eventos')
 @Controller('schedules')
 export class SchedulesController {
   constructor(private schedulesService: SchedulesService) {}
 
   @Get()
   @ApiBearerAuth()
-  findAll(@Query('startDate') startDate: Date, @Query('endDate') endDate: Date) {
+  findAll(@Query('startDate') startDate?: Date, @Query('endDate') endDate?: Date) {
     return this.schedulesService.findAll(startDate, endDate);
   }
 

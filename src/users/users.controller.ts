@@ -1,16 +1,28 @@
-import { Controller, Get } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
-import { Public } from 'src/core/decorators';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { CreateUserDto } from './dto';
 import { UsersService } from './users.service';
 
-@ApiTags('users')
+@ApiTags('Gestão de Usuários')
 @Controller('users')
 export class UsersController {
-  constructor(private usersService: UsersService) {}
+  constructor(private usersService: UsersService) { }
 
   @Get()
-  @Public()
+  @ApiBearerAuth()
   findAll() {
     return this.usersService.findAll();
+  }
+
+  @Post()
+  @ApiBearerAuth()
+  create(@Body() user: CreateUserDto) {
+    return this.usersService.findAll();
+  }
+
+  @Delete('/:id')
+  @ApiBearerAuth()
+  delete(@Param('id') id: number) {
+    return this.usersService.delete(id)
   }
 }

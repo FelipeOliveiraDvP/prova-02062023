@@ -17,7 +17,7 @@ export class AuthService {
     const user = {
       id: 1,
       name: 'Administrador',
-      email: 'admin@email',
+      email: 'admin@email.com',
       password: 'asdf1234'
     };
 
