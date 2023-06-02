@@ -2,20 +2,17 @@ import {
   Column,
   Entity,
   PrimaryGeneratedColumn,
-  OneToOne,
-  JoinColumn,
-  OneToMany,
   BeforeInsert,
+  OneToMany,
 } from 'typeorm';
 import * as brcrypt from 'bcrypt';
-import { Role } from './role.entity';
-import { Token } from './token.entity';
 import { Timestamps } from './commons/timestamps';
+import { Schedule } from './schedule.entity';
 
 @Entity('users')
 export class User extends Timestamps {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
+  @PrimaryGeneratedColumn()
+  id: number;
 
   @Column({ type: 'varchar', length: 100 })
   name: string;
@@ -26,24 +23,8 @@ export class User extends Timestamps {
   @Column({ type: 'varchar', length: 100 })
   password: string;
 
-  @Column({ type: 'varchar', length: 30, nullable: true })
-  phone: string;
-
-  @Column({ type: 'varchar', length: 300, nullable: true })
-  avatar: string;
-
-  @Column({ type: 'boolean', default: false })
-  active: boolean;
-
-  @Column({ type: 'datetime', nullable: true })
-  verifiedAt: Date;
-
-  @OneToOne(() => Role)
-  @JoinColumn()
-  role: Role;
-
-  @OneToMany(() => Token, (token) => token.user)
-  tokens: Token[];
+  @OneToMany(() => Schedule, (schedule) => schedule.user)
+  schedules: Schedule[]
 
   @BeforeInsert()
   async setPassword(password: string) {
