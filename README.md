@@ -1,7 +1,7 @@
 ## Contact
 
 Felipe de Oliveira Souza
-E-mail: [felipe.deoliveira@sp.senail.br](mailto:felipe.deoliveira@sp.senail.br)
+E-mail: [felipe.deoliveira@sp.senail.br](mailto:felipe.deoliveira@sp.senai.br)
 
 ## Description
 
